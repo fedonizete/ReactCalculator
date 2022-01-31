@@ -1,5 +1,25 @@
 .buttons{
-    background-color: whitesmoke;
-    height: 5rem;
-    width: 5rem;
+    background-color: #060606;
+    color: whitesmoke;
+    height: 56px;
+    width: 72px;
+
+    font-size: 1.1rem;
+    text-align: center;
+    padding: .7rem;
+    
+    cursor: pointer;
+
+    border: #292929 solid 1px;
+
+    display: inline-block;
+    box-sizing: border-box;
+    
+}
+.double{
+    width: 144px;
+}
+.operation{
+    background-color: #121212;
+    color: whitesmoke;
 }
