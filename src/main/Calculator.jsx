@@ -4,10 +4,10 @@ import Buttons from '../components/Buttons'
 import './Calculator.css'
 
 const defaultValue = {
-    currentValue: 10,
+    currentValue: 0,
+    displayValue: '0',
     values: [0, 0],
-    operation: null,
-
+    operation: null
 }
 
 
@@ -18,39 +18,39 @@ export default class Calculator extends Component {
     constructor(props){
         super(props)
 
+        this.addDigit = this.addDigit.bind(this)
+
     }
 
     addDigit(e){
+        let displayValue = this.state.currentValue + e;
 
+        this.setState({currentValue: displayValue})
     }
     
 
     render(){
 
-       
-
-        
-
         return(
             <div className='calculator'>
-                <Display value={100}/>
+                <Display value={this.state.currentValue}/>
                 <Buttons label='AC' double operation/>
                 <Buttons label='/' operation/>
                 <Buttons label='<' operation/>
-                <Buttons label='7'/>
-                <Buttons label='8'/>
-                <Buttons label='9'/>
+                <Buttons label='7' onClick={this.addDigit}/>
+                <Buttons label='8' onClick={this.addDigit}/>
+                <Buttons label='9' onClick={this.addDigit}/>
                 <Buttons label='*' operation/>
-                <Buttons label='4'/>
-                <Buttons label='5'/>
-                <Buttons label='6'/>
+                <Buttons label='4' onClick={this.addDigit}/>
+                <Buttons label='5' onClick={this.addDigit}/>
+                <Buttons label='6' onClick={this.addDigit}/>
                 <Buttons label='-' operation/>
-                <Buttons label='1'/>
-                <Buttons label='2'/>
-                <Buttons label='3'/>
+                <Buttons label='1' onClick={this.addDigit}/>
+                <Buttons label='2' onClick={this.addDigit}/>
+                <Buttons label='3' onClick={this.addDigit}/>
                 <Buttons label='+' operation/>
-                <Buttons label='0' double/>
-                <Buttons label='.'/>
+                <Buttons label='0' double onClick={this.addDigit}/>
+                <Buttons label='.' onClick={this.addDigit}/>
                 <Buttons label='=' operation/>
             </div>
         )
