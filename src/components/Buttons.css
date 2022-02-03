@@ -15,11 +15,15 @@
     display: inline-block;
     box-sizing: border-box;
     
+    user-select: none;
+}
+.buttons:hover{
+    background-color: #252525;
 }
 .double{
     width: 144px;
 }
 .operation{
-    background-color: #121212;
+    background-color: #1b1b1b;
     color: whitesmoke;
 }

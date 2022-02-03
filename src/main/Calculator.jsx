@@ -21,6 +21,7 @@ export default class Calculator extends Component {
 
         this.addDigit = this.addDigit.bind(this)
         this.clear = this.clear.bind(this)
+        this.setOperation = this.setOperation.bind(this)
     }
 
     clear(){
@@ -31,16 +32,72 @@ export default class Calculator extends Component {
 
 
         const clear = this.state.clearDisplay || this.state.currentValue === 0
-
-
         const displayValue = clear ? '' : this.state.currentValue
+
+
+        console.log(this.state.currentValue)
+        const displayNumber = Number(displayValue + e)
+        
+
+        this.setState({
+            currentValue: displayNumber,
+            clearDisplay: false
+            })
+    }
+
+    setOperation(e){
+        const values = [...this.state.values]
+        let i = this.state.i
+        const currentValue = this.state.currentValue
+        const operation = this.state.operation
+        let result
+
+        this.setState({
+            operation: e,
+            clearDisplay: true
+        })
+
+        
+        const newValue = parseFloat(currentValue)
+        values[i] = newValue
+
+        if(i === 1){
+
+            
+            switch(operation){
+                case '/':
+                    result = values[0] / values[1];
+                    
+                break;
+                case '+':
+                    result = values[0] + values[1];
+                break;
+                
+            }
+            console.log(result)
+            
+
+            this.setState({
+                values,
+                currentValue: result,
+                i: 1
+            })
+            console.log(this.state.currentValue)
+            console.log(values)
+            }
+
+
+
+        values[i] = currentValue
+        i === 0 ? i = 1 : i = 0                            // changes value of i everytime setOperation is called
+
 
         
 
         this.setState({
-            currentValue: displayValue + e,
-            })
-        
+            i: i,
+            values
+        })
     }
     
 
@@ -50,23 +107,23 @@ export default class Calculator extends Component {
             <div className='calculator'>
                 <Display value={this.state.currentValue}/>
                 <Buttons label='AC' double operation onClick={this.clear}/>
-                <Buttons label='/' operation/>
-                <Buttons label='<' operation/>
+                <Buttons label='/' operation onClick={this.setOperation}/>
+                <Buttons label='<' operation onClick={this.setOperation}/>
                 <Buttons label='7' onClick={this.addDigit}/>
                 <Buttons label='8' onClick={this.addDigit}/>
                 <Buttons label='9' onClick={this.addDigit}/>
-                <Buttons label='*' operation/>
+                <Buttons label='*' operation onClick={this.setOperation}/>
                 <Buttons label='4' onClick={this.addDigit}/>
                 <Buttons label='5' onClick={this.addDigit}/>
                 <Buttons label='6' onClick={this.addDigit}/>
-                <Buttons label='-' operation/>
+                <Buttons label='-' operation onClick={this.setOperation}/>
                 <Buttons label='1' onClick={this.addDigit}/>
                 <Buttons label='2' onClick={this.addDigit}/>
                 <Buttons label='3' onClick={this.addDigit}/>
-                <Buttons label='+' operation/>
+                <Buttons label='+' operation onClick={this.setOperation}/>
                 <Buttons label='0' double onClick={this.addDigit}/>
                 <Buttons label='.' onClick={this.addDigit}/>
-                <Buttons label='=' operation/>
+                <Buttons label='=' operation onClick={this.setOperation}/>
             </div>
         )
     }
