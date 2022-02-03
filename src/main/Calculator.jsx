@@ -5,10 +5,10 @@ import './Calculator.css'
 
 const defaultValue = {
     currentValue: 0,
-    displayValue: '0',
     values: [0, 0],
     operation: null,
-    i: 0
+    i: 0,
+    clearDisplay: false
 }
 
 
@@ -29,14 +29,18 @@ export default class Calculator extends Component {
 
     addDigit(e){
 
+
+        const clear = this.state.clearDisplay || this.state.currentValue === 0
+
+
+        const displayValue = clear ? '' : this.state.currentValue
+
         
 
-        let displayValue = this.state.currentValue + e;
-
         this.setState({
-            currentValue: displayValue
+            currentValue: displayValue + e,
             })
-
+        
     }
     
 
