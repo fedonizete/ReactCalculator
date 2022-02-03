@@ -79,6 +79,7 @@ export default class Calculator extends Component {
             values[1] = 0
 
             this.setState({
+                values,
                 currentValue: result,
                 i: 1
             })
