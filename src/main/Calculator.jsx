@@ -7,7 +7,8 @@ const defaultValue = {
     currentValue: 0,
     displayValue: '0',
     values: [0, 0],
-    operation: null
+    operation: null,
+    i: 0
 }
 
 
@@ -19,13 +20,23 @@ export default class Calculator extends Component {
         super(props)
 
         this.addDigit = this.addDigit.bind(this)
+        this.clear = this.clear.bind(this)
+    }
 
+    clear(){
+        this.setState({...defaultValue })
     }
 
     addDigit(e){
+
+        
+
         let displayValue = this.state.currentValue + e;
 
-        this.setState({currentValue: displayValue})
+        this.setState({
+            currentValue: displayValue
+            })
+
     }
     
 
@@ -34,7 +45,7 @@ export default class Calculator extends Component {
         return(
             <div className='calculator'>
                 <Display value={this.state.currentValue}/>
-                <Buttons label='AC' double operation/>
+                <Buttons label='AC' double operation onClick={this.clear}/>
                 <Buttons label='/' operation/>
                 <Buttons label='<' operation/>
                 <Buttons label='7' onClick={this.addDigit}/>
