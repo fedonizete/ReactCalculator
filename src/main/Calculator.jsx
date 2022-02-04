@@ -8,7 +8,8 @@ const defaultValue = {
     values: [0, 0],
     operation: null,
     i: 0,
-    clearDisplay: false
+    clearDisplay: false,
+    fontSize: '3rem'
 }
 
 
@@ -34,10 +35,10 @@ export default class Calculator extends Component {
         const clear = this.state.clearDisplay || this.state.currentValue === 0
         const displayValue = clear ? '' : this.state.currentValue
 
+        parseFloat(displayValue) && parseFloat(e)
 
-        const displayNumber = parseFloat(displayValue + e)
+        const displayNumber = displayValue + e
         
-
 
         this.setState({
             currentValue: displayNumber,
@@ -83,9 +84,12 @@ export default class Calculator extends Component {
                 case '=':
                     result = currentValue
             }
-            
+
             values[0] = result
             values[1] = 0
+
+            
+            
 
             this.setState({
                 values,
@@ -105,10 +109,11 @@ export default class Calculator extends Component {
     
 
     render(){
-
+        
         return(
             <div className='calculator'>
-                <Display value={this.state.currentValue}/>
+                <Display value={this.state.currentValue} fontSize={this.state.fontSize}/>
+                    
                 <Buttons label='AC' double operation onClick={this.clear}/>
                 <Buttons label='/' operation onClick={this.setOperation}/>
                 <Buttons label='<' operation onClick={this.setOperation}/>

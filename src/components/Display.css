@@ -1,13 +1,13 @@
 .display{
     background-color: #1e1e1e;
     height: 120px;
-    overflow: hidden;
+    overflow:inherit;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     color: whitesmoke;
 
-    font-size: 3rem;
+    font-size: 1.8rem;
 
 }

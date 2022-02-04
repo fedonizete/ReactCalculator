@@ -7,7 +7,6 @@ function Buttons (props) {
     classes += props.double ? 'double ' : '';
     classes += props.operation ? 'operation ' : '';
 
-    
     return(
             <div className={classes} onClick={e => props.onClick(props.label)}>
             {props.label}

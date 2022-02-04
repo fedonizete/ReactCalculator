@@ -1,12 +1,12 @@
 .buttons{
     background-color: #060606;
     color: whitesmoke;
-    height: 56px;
+    height: 60px;
     width: 72px;
 
     font-size: 1.1rem;
     text-align: center;
-    padding: .7rem;
+    padding: .9rem;
     
     cursor: pointer;
 
