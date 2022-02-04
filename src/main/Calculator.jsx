@@ -35,8 +35,9 @@ export default class Calculator extends Component {
         const displayValue = clear ? '' : this.state.currentValue
 
 
-        const displayNumber = Number(displayValue + e)
+        const displayNumber = parseFloat(displayValue + e)
         
+
 
         this.setState({
             currentValue: displayNumber,
@@ -62,17 +63,25 @@ export default class Calculator extends Component {
 
         if(i === 1){
 
-        console.log('i = 1')
             
             switch(operation){
                 case '/':
                     result = values[0] / values[1];
-                    
                 break;
+
+                case '*':
+                    result = values[0] * values[1]
+                break;
+                
+                case '-':
+                    result = values[0] - values[1]
+                break;
+
                 case '+':
                     result = values[0] + values[1];
                 break;
-                
+                case '=':
+                    result = currentValue
             }
             
             values[0] = result
@@ -84,9 +93,7 @@ export default class Calculator extends Component {
                 i: 1
             })
 
-            console.log(this.state.values)
         }else{
-            console.log('i = 0')
             i = 1
         }
 
