@@ -1,13 +1,19 @@
 .display{
     background-color: #1e1e1e;
     height: 120px;
-    overflow:inherit;
+    overflow:hidden;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 10px;
     color: whitesmoke;
 
-    font-size: 1.8rem;
+    font-size: 3rem;
 
+}
+.small{
+    font-size: 2rem;
+}
+.smaller{
+    font-size: 1.5rem;
 }

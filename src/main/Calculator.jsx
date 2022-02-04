@@ -9,7 +9,7 @@ const defaultValue = {
     operation: null,
     i: 0,
     clearDisplay: false,
-    fontSize: '3rem'
+    fontSize: ''
 }
 
 
@@ -23,6 +23,19 @@ export default class Calculator extends Component {
         this.addDigit = this.addDigit.bind(this)
         this.clear = this.clear.bind(this)
         this.setOperation = this.setOperation.bind(this)
+    }
+
+    setFont(e){
+
+        const size = e.length
+
+        if(size > 7){
+            if(size < 14){
+                this.setState({fontSize: 'small'})
+            }else{
+                this.setState({fontSize: 'smaller'})
+            }
+        }
     }
 
     clear(){
@@ -39,6 +52,7 @@ export default class Calculator extends Component {
 
         const displayNumber = displayValue + e
         
+        this.setFont(displayNumber)
 
         this.setState({
             currentValue: displayNumber,
@@ -88,7 +102,11 @@ export default class Calculator extends Component {
             values[0] = result
             values[1] = 0
 
-            
+            const strResult = result.toString();
+
+            if(strResult.length > 7){
+                this.setFont(strResult)
+            }
             
 
             this.setState({
@@ -106,6 +124,7 @@ export default class Calculator extends Component {
             values
         })
     }
+
     
 
     render(){
