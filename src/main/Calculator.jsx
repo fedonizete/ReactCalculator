@@ -116,17 +116,22 @@ export default class Calculator extends Component {
             values[0] = result
             values[1] = 0
 
+
+            if (isNaN(values[0]) || !isFinite(values[0])) {         
+                this.clearMemory()
+            return
+            }
+
+
             const strResult = result.toString();
             this.setFont(strResult)
             
             
-
             this.setState({
                 values,
                 currentValue: result,
                 i: 1
             })
-
         }else{
             i = 1
         }
