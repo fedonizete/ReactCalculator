@@ -23,9 +23,10 @@ export default class Calculator extends Component {
         this.addDigit = this.addDigit.bind(this)
         this.clear = this.clear.bind(this)
         this.setOperation = this.setOperation.bind(this)
+        this.backspace = this.backspace.bind(this)
     }
 
-    setFont(e){
+    setFont(e){                                 // adjust display font size based on e.length
 
         const size = e.length
 
@@ -58,6 +59,19 @@ export default class Calculator extends Component {
             currentValue: displayNumber,
             clearDisplay: false
             })
+    }
+
+    backspace(){
+        const currentValue = this.state.currentValue
+        let newCurrentValue = currentValue.slice(0, -1)
+
+        if(newCurrentValue === ''){
+            newCurrentValue = 0
+        }
+
+        this.setState({
+            currentValue: newCurrentValue
+        })
     }
 
     setOperation(e){
@@ -103,10 +117,8 @@ export default class Calculator extends Component {
             values[1] = 0
 
             const strResult = result.toString();
-
-            if(strResult.length > 7){
-                this.setFont(strResult)
-            }
+            this.setFont(strResult)
+            
             
 
             this.setState({
@@ -135,7 +147,7 @@ export default class Calculator extends Component {
                     
                 <Buttons label='AC' double operation onClick={this.clear}/>
                 <Buttons label='/' operation onClick={this.setOperation}/>
-                <Buttons label='<' operation onClick={this.setOperation}/>
+                <Buttons label='<' operation onClick={this.backspace}/>
                 <Buttons label='7' onClick={this.addDigit}/>
                 <Buttons label='8' onClick={this.addDigit}/>
                 <Buttons label='9' onClick={this.addDigit}/>
