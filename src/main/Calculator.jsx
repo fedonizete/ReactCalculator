@@ -36,6 +36,8 @@ export default class Calculator extends Component {
             }else{
                 this.setState({fontSize: 'smaller'})
             }
+        }else{
+            this.setState({fontSize: ''})
         }
     }
 
@@ -68,6 +70,8 @@ export default class Calculator extends Component {
         if(newCurrentValue === ''){
             newCurrentValue = 0
         }
+
+        this.setFont(newCurrentValue)
 
         this.setState({
             currentValue: newCurrentValue
